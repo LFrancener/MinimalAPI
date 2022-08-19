@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Luciano Francener\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj": {}
+    "C:\\Users\\Luciano Francener\\source\\repos\\MinimalAPI\\TodoApi\\TodoApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Luciano Francener\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj": {
+    "C:\\Users\\Luciano Francener\\source\\repos\\MinimalAPI\\TodoApi\\TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luciano Francener\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj",
+        "projectUniqueName": "C:\\Users\\Luciano Francener\\source\\repos\\MinimalAPI\\TodoApi\\TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "C:\\Users\\Luciano Francener\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj",
+        "projectPath": "C:\\Users\\Luciano Francener\\source\\repos\\MinimalAPI\\TodoApi\\TodoApi.csproj",
         "packagesPath": "C:\\Users\\Luciano Francener\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luciano Francener\\source\\repos\\TodoApi\\TodoApi\\obj\\",
+        "outputPath": "C:\\Users\\Luciano Francener\\source\\repos\\MinimalAPI\\TodoApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Luciano Francener\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -50,7 +50,11 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
+              "target": "Package",
+              "version": "[6.4.0, )"
             }
           },
           "imports": [
