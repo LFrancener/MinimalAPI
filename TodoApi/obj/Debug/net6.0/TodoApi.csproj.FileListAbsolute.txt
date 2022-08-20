@@ -65,3 +65,5 @@ C:\Users\Luciano Francener\source\repos\MinimalAPI\TodoApi\obj\Debug\net6.0\Todo
 C:\Users\Luciano Francener\source\repos\MinimalAPI\TodoApi\obj\Debug\net6.0\TodoApi.genruntimeconfig.cache
 C:\Users\Luciano Francener\source\repos\MinimalAPI\TodoApi\obj\Debug\net6.0\ref\TodoApi.dll
 C:\Users\Luciano Francener\source\repos\MinimalAPI\TodoApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\Luciano Francener\source\repos\MinimalAPI\TodoApi\bin\Debug\net6.0\Npgsql.dll
+C:\Users\Luciano Francener\source\repos\MinimalAPI\TodoApi\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

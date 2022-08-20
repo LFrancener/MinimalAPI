@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LHu68wcFkCEBf/M++zmcpAqzW7O9OU9ZTYLjBfFNlDPhH+WbnKqIEWIMqCtvxeZCKkFhPC7OZdFAZBDC5naWBg==",
+  "dgSpecHash": "stFTlStxAxwL9hn8WidvM0Xd6dXJ0SOOrfbLCBJSw8J38aKuIlw9FPqqWzXXu5aY5IioYHXnemwIZ5cE1u8UCQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Luciano Francener\\source\\repos\\MinimalAPI\\TodoApi\\TodoApi.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,8 @@
     "C:\\Users\\Luciano Francener\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\Luciano Francener\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\Luciano Francener\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Luciano Francener\\.nuget\\packages\\npgsql\\6.0.6\\npgsql.6.0.6.nupkg.sha512",
+    "C:\\Users\\Luciano Francener\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\6.0.6\\npgsql.entityframeworkcore.postgresql.6.0.6.nupkg.sha512",
     "C:\\Users\\Luciano Francener\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\Luciano Francener\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.4.0\\swashbuckle.aspnetcore.annotations.6.4.0.nupkg.sha512",
     "C:\\Users\\Luciano Francener\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",

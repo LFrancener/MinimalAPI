@@ -1,10 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Annotations;
+using TodoApi.Context;
+using TodoApi.DTO;
+using TodoApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<TodoDb>(options => options.UseInMemoryDatabase("TodoList"));
+builder.Services.AddEntityFrameworkNpgsql()
+    .AddDbContext<TodoDb>(options =>
+        options.UseNpgsql("Host=localhost;Port=5432;Pooling=true;Database=MinimalApiDatabase;User Id=postgres;Password=admin;"));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -85,30 +91,3 @@ app.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
 .WithMetadata(new SwaggerOperationAttribute(summary: "Delete a Todo item"));
 
 app.Run();
-
-class Todo
-{
-    public int Id { get; set; }
-    public string? Name { get; set; }
-    public bool IsComplete { get; set; }
-    public string? Secret { get; set; }
-}
-
-class TodoItemDTO
-{
-    public int Id { get; set; }
-    public string? Name { get; set; }
-    public bool IsComplete { get; set; }
-
-    public TodoItemDTO() { }
-    public TodoItemDTO(Todo todoItem) =>
-        (Id, Name, IsComplete) = (todoItem.Id, todoItem.Name, todoItem.IsComplete);
-}
-
-class TodoDb : DbContext
-{
-    public TodoDb(DbContextOptions<TodoDb> options)
-        : base(options) { }
-
-    public DbSet<Todo> Todos => Set<Todo>();
-}
