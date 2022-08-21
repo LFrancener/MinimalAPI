@@ -1,15 +1,14 @@
 ﻿using TodoApi.Models;
 
-namespace TodoApi.DTO
+namespace TodoApi.DTO.ViewModels
 {
-    public class TodoItemDTO
+    public class TodoItemViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string? Name { get; set; }
         public bool IsComplete { get; set; }
 
-        public TodoItemDTO() { }
-        public TodoItemDTO(Todo todoItem) =>
+        public TodoItemViewModel(Todo todoItem) =>
             (Id, Name, IsComplete) = (todoItem.Id, todoItem.Name, todoItem.IsComplete);
     }
 }

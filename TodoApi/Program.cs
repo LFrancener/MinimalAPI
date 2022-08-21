@@ -2,7 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Annotations;
 using TodoApi.Context;
-using TodoApi.DTO;
+using TodoApi.DTO.Commands;
+using TodoApi.DTO.ViewModels;
 using TodoApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,44 +33,44 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapGet("/todoitems", async (TodoDb db) =>
-    await db.Todos.Select(t => new TodoItemDTO(t)).ToListAsync())
+    await db.Todos.Select(t => new TodoItemViewModel(t)).ToListAsync())
     .WithMetadata(new SwaggerOperationAttribute(summary: "Get all Todo items"));
 
 app.MapGet("/todoitems/complete", async (TodoDb db) =>
-    await db.Todos.Where(t => t.IsComplete).Select(t => new TodoItemDTO(t)).ToListAsync())
+    await db.Todos.Where(t => t.IsComplete).Select(t => new TodoItemViewModel(t)).ToListAsync())
     .WithMetadata(new SwaggerOperationAttribute(summary: "Get all completed Todo items"));
 
-app.MapGet("/todoitems/{id}", async (int id, TodoDb db) =>
+app.MapGet("/todoitems/{id}", async (Guid id, TodoDb db) =>
     await db.Todos.FindAsync(id)
         is Todo todo
-            ? Results.Ok(new TodoItemDTO(todo))
+            ? Results.Ok(new TodoItemViewModel(todo))
             : Results.NotFound())
     .WithMetadata(new SwaggerOperationAttribute(summary: "Get Todo item by Id"));
 
-app.MapPost("/todoitems", async (TodoItemDTO todoItemDTO, TodoDb db) =>
+app.MapPost("/todoitems", async (SaveOrUpdateTodoItemCommand command, TodoDb db) =>
 {
     var todoItem = new Todo()
     {
-        Id = todoItemDTO.Id,
-        Name = todoItemDTO.Name,
-        IsComplete = todoItemDTO.IsComplete
+        Id = Guid.NewGuid(),
+        Name = command.Name,
+        IsComplete = command.IsComplete
     };
 
     db.Todos.Add(todoItem);
     await db.SaveChangesAsync();
 
-    Results.Created($"/todoitems/{todoItem.Id}", new TodoItemDTO(todoItem));
+    Results.Created($"/todoitems/{todoItem.Id}", new TodoItemViewModel(todoItem));
 })
 .WithMetadata(new SwaggerOperationAttribute(summary: "Insert a Todo item"));
 
-app.MapPut("/todoitems/{id}", async (int id, TodoItemDTO todoItemDTO, TodoDb db) =>
+app.MapPut("/todoitems/{id}", async (Guid id, SaveOrUpdateTodoItemCommand command, TodoDb db) =>
 {
     var todo = await db.Todos.FindAsync(id);
 
     if (todo is null) return Results.NotFound();
 
-    todo.Name = todoItemDTO.Name;
-    todo.IsComplete = todoItemDTO.IsComplete;
+    todo.Name = command.Name;
+    todo.IsComplete = command.IsComplete;
 
     await db.SaveChangesAsync();
 
@@ -77,13 +78,13 @@ app.MapPut("/todoitems/{id}", async (int id, TodoItemDTO todoItemDTO, TodoDb db)
 })
 .WithMetadata(new SwaggerOperationAttribute(summary: "Edit a Todo item"));
 
-app.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
+app.MapDelete("/todoitems/{id}", async (Guid id, TodoDb db) =>
 {
     if (await db.Todos.FindAsync(id) is Todo todo)
     {
         db.Todos.Remove(todo);
         await db.SaveChangesAsync();
-        return Results.Ok(new TodoItemDTO(todo));
+        return Results.Ok(new TodoItemViewModel(todo));
     }
 
     return Results.NotFound();
